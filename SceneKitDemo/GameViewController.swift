@@ -44,6 +44,14 @@ class GameViewController: UIViewController {
         scene.rootNode.addChildNode(cameraNode)
         
         addSquare()
+        addSphere()
+    }
+    
+    func addSphere() {
+        let geometry = SCNSphere(radius: 1.0)
+        let sphereNode = SCNNode(geometry: geometry)
+        sphereNode.position = SCNVector3(x: 0, y: 1, z: 0)
+        scene.rootNode.addChildNode(sphereNode)
     }
     
     func addSquare() {
