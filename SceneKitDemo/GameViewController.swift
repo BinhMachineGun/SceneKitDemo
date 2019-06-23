@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
         scene.rootNode.addChildNode(cameraNode)
         
         addSquare()
-        addSphere()
+//        addSphere()
     }
     
     func addSphere() {
@@ -58,7 +58,17 @@ class GameViewController: UIViewController {
         let geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
         let squareNode = SCNNode()
         squareNode.geometry = geometry
+        squareNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         scene.rootNode.addChildNode(squareNode)
+        
+        let force = SCNVector3(x: 0, y: 10, z: 0)
+//        let position = SCNVector3(x: 0, y: 0, z: 1)
+        let position = SCNVector3(x:0.05, y: 0.05, z: 0.05)
+        
+//        squareNode.physicsBody?.applyForce(force, asImpulse: true)
+        squareNode.physicsBody?.applyForce(force, at: position, asImpulse: true)
+        
+        let torqueForce = SCNVector4(x: 0, y: 0, z: 1, w: 1)
+        squareNode.physicsBody?.applyTorque(torqueForce, asImpulse: true)
     }
-    
 }
