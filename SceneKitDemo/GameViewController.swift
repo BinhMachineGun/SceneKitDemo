@@ -23,6 +23,11 @@ class GameViewController: UIViewController {
     
     func setupView() {
         sceneView = view as! SCNView
+        
+        sceneView.showsStatistics = true
+        sceneView.allowsCameraControl = true
+        sceneView.autoenablesDefaultLighting = true
+        
         setupScene()
     }
     
